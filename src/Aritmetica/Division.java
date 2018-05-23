@@ -3,17 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Aritmetico;
+package Aritmetica;
 
 /**
  *
  * @author UCA
  */
 public class Division implements Aritmetico{
-    private int num1, num2;
+    private int num3;
+    private int valor1, valor2;
+    
+
     @Override
-    public void Aritmetico() {
-        System.out.println(num1 / num2);
-    }
+    public float Aritmetico(float x, float y) {
+        //valor1 = x;
+        //valor2 = y;
+        num3 = (int)(x/y);
+        System.out.println(num3);
+        return num3;
+        }
     
 }

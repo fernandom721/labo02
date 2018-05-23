@@ -5,7 +5,13 @@
  */
 package gui;
 
+import Aritmetica.Aritmetico;
+import Aritmetica.Operacion;
+import calculadora.AbstractFactory;
+import calculadora.FactoryProducer;
 import java.awt.Container;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -15,8 +21,11 @@ import javax.swing.JTextField;
  * @author UCA
  */
 public class Ventana extends JFrame{
-    private JTextField num1, num2, operacion, valortotal ,total, convertir, convertido;
+    
+    private JTextField num1 ,num2, operacion, valortotal ,total, convertir, convertido;
     private JButton suma, resta, mult, div, bin, hex;
+    private float valor1, valor2, valor;
+     AbstractFactory factory;
     
     public Ventana(){
         super("Calculadora");
@@ -37,6 +46,10 @@ public class Ventana extends JFrame{
         num2 = new JTextField ();
         num2.setBounds(175, 30, 50, 30);
         
+        //valor1 = Integer.parseInt(num1.getText());
+        //valor2 = Integer.parseInt(num2.getText());
+        //Aritmetico sumar = factory.getOperacion("Suma");
+        
         total = new JTextField(" = ");
         total.setBounds(250, 30, 50, 30);
         total.setEditable(false);
@@ -47,15 +60,48 @@ public class Ventana extends JFrame{
         
         suma = new JButton(" + ");
         suma.setBounds(20, 100, 50, 30);
+        suma.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                operacion.setText("+");
+                factory = FactoryProducer.getFactory("Aritmetica");
+                Aritmetico sumar = factory.getOperacion("Suma");
+                valor= sumar.Aritmetico(Float.parseFloat(num1.getText()), Float.parseFloat(num2.getText()));
+                valortotal.setText(String.valueOf(valor));
+                }
+        });
         
         resta = new JButton(" - ");
         resta.setBounds(20, 150, 50, 30);
+        resta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                operacion.setText("-");
+                valor1 = Integer.parseInt(num1.getText());
+                valor2 = Integer.parseInt(num2.getText());
+
+                }
+        });
         
         mult = new JButton(" * ");
         mult.setBounds(20, 200, 50, 30);
+        mult.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                operacion.setText("*");
+                
+                }
+        });
         
         div = new JButton(" / ");
         div.setBounds(20, 250, 50, 30);
+        div.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                operacion.setText("/");
+                
+                }
+        });
         
         convertir = new JTextField("Convertir Reslutado");
         convertir.setBounds(150, 100, 150, 30);

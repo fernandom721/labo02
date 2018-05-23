@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Aritmetico;
+package Aritmetica;
 
 /**
  *
  * @author UCA
  */
 public interface Aritmetico {
-    void Aritmetico();
+
+    float Aritmetico(float x, float y);
+
 }

@@ -5,10 +5,14 @@
  */
 package calculadora;
 
+import Aritmetica.Aritmetico;
+import Conversiones.Convertidor;
+
 /**
  *
  * @author UCA
  */
 public interface AbstractFactory {
-    
+        Aritmetico getOperacion(String type);
+        Convertidor getConvertidor(String type);
 }

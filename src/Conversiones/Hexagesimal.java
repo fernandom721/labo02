@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Aritmetico;
+package Conversiones;
 
 /**
  *
- * @author UCA
+ * @author Fernando Martínez
  */
-public class Resta implements Aritmetico{
-    private int num1, num2;
+public class Hexagesimal implements Convertidor{
+    private int num3;
     @Override
-    public void Aritmetico() {
-        System.out.println(num1 - num2);
+    public void Convertir() {
+        
     }
     
 }

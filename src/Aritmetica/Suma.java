@@ -3,17 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Aritmetico;
-import gui.Ventana;
+package Aritmetica;
+
 /**
  *
  * @author UCA
  */
 public class Suma implements Aritmetico{
-    private int num1 , num2;
-    @Override
-    public void Aritmetico() {
-        System.out.println(num1 + num2);
-    }
+    private float num;
+    private int valor1, valor2;
     
+
+    @Override
+    public float Aritmetico(float x, float y) {
+        
+        num = (x+y);
+        return num;
+        
+        }
+
+
+
 }
