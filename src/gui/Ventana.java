@@ -6,7 +6,7 @@
 package gui;
 
 import Aritmetica.Aritmetico;
-import Aritmetica.Operacion;
+import Conversiones.Convertidor;
 import calculadora.AbstractFactory;
 import calculadora.FactoryProducer;
 import java.awt.Container;
@@ -24,8 +24,8 @@ public class Ventana extends JFrame{
     
     private JTextField num1 ,num2, operacion, valortotal ,total, convertir, convertido;
     private JButton suma, resta, mult, div, bin, hex;
-    private float valor1, valor2, valor;
-     AbstractFactory factory;
+    private float valor;
+    AbstractFactory factory;
     
     public Ventana(){
         super("Calculadora");
@@ -45,10 +45,6 @@ public class Ventana extends JFrame{
         
         num2 = new JTextField ();
         num2.setBounds(175, 30, 50, 30);
-        
-        //valor1 = Integer.parseInt(num1.getText());
-        //valor2 = Integer.parseInt(num2.getText());
-        //Aritmetico sumar = factory.getOperacion("Suma");
         
         total = new JTextField(" = ");
         total.setBounds(250, 30, 50, 30);
@@ -77,9 +73,10 @@ public class Ventana extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 operacion.setText("-");
-                valor1 = Integer.parseInt(num1.getText());
-                valor2 = Integer.parseInt(num2.getText());
-
+                factory = FactoryProducer.getFactory("Aritmetica");
+                Aritmetico restar = factory.getOperacion("Resta");
+                valor= restar.Aritmetico(Float.parseFloat(num1.getText()), Float.parseFloat(num2.getText()));
+                valortotal.setText(String.valueOf(valor));
                 }
         });
         
@@ -89,7 +86,10 @@ public class Ventana extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 operacion.setText("*");
-                
+                factory = FactoryProducer.getFactory("Aritmetica");
+                Aritmetico multi = factory.getOperacion("Multiplicacion");
+                valor= multi.Aritmetico(Float.parseFloat(num1.getText()), Float.parseFloat(num2.getText()));
+                valortotal.setText(String.valueOf(valor));
                 }
         });
         
@@ -99,7 +99,10 @@ public class Ventana extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 operacion.setText("/");
-                
+                factory = FactoryProducer.getFactory("Aritmetica");
+                Aritmetico dividir = factory.getOperacion("Division");
+                valor= dividir.Aritmetico(Float.parseFloat(num1.getText()), Float.parseFloat(num2.getText()));
+                valortotal.setText(String.valueOf(valor));
                 }
         });
         
@@ -109,9 +112,27 @@ public class Ventana extends JFrame{
         
         hex = new JButton("Hexa");
         hex.setBounds(150, 200, 70, 30);
+        hex.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                factory = FactoryProducer.getFactory("Conversiones");
+                Convertidor a_hexa = factory.getConvertidor("Hexa");
+                valor = a_hexa.Convertir(Float.parseFloat(valortotal.getText()));
+                convertido.setText(String.valueOf(valor));
+                }
+        });
         
         bin = new JButton("Bin");
         bin.setBounds(150, 150, 70, 30);
+        bin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                factory = FactoryProducer.getFactory("Conversiones");
+                Convertidor a_binario = factory.getConvertidor("Bin");
+                valor = a_binario.Convertir(Float.parseFloat(valortotal.getText()));
+                convertido.setText(String.valueOf(valor));
+                }
+        });
         
         convertido = new JTextField();
         convertido.setBounds(250, 175, 130, 30);

@@ -10,17 +10,16 @@ package Aritmetica;
  * @author UCA
  */
 public class Division implements Aritmetico{
-    private int num3;
+    private float num;
     private int valor1, valor2;
     
 
     @Override
     public float Aritmetico(float x, float y) {
-        //valor1 = x;
-        //valor2 = y;
-        num3 = (int)(x/y);
-        System.out.println(num3);
-        return num3;
+        
+        num = (x/y);
+        return num;
+        
         }
     
 }

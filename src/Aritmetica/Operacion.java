@@ -20,9 +20,9 @@ public class Operacion implements AbstractFactory{
                 return new Suma();
             case "Resta":
                 return new Resta();
-            case "Mult":
+            case "Multiplicacion":
                 return new Multiplicacion();
-            case"Div":
+            case"Division":
                 return new Division();
         }
         

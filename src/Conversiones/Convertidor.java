@@ -10,5 +10,5 @@ package Conversiones;
  * @author Fernando Martínez
  */
 public interface Convertidor {
-    void Convertir();
+    float Convertir(float x);
 }

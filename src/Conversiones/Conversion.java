@@ -25,7 +25,7 @@ public class Conversion implements AbstractFactory{
         switch (type){
             case "Bin":
                 return new Binario();
-            case "Hex":
+            case "Hexa":
                 return new Hexagesimal();
         }
         
